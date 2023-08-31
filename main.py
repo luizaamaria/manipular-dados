@@ -23,6 +23,7 @@ def create_server_connection(host_name, user_name, user_password):
 
 
 host_name = os.getenv("DB_HOST")
+db_name = os.getenv("DB_NAME")
 user_name = os.getenv("DB_USER")
 user_password = os.getenv("DB_PASSWORD")
 

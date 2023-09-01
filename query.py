@@ -76,8 +76,8 @@ if __name__ == "__main__":
 
 def insert_teacher(host_name, user_name, user_password, db_name):
     val = [
-        (7, 'Hank', 'Dodson', 'ENG', None, '1991-12-23', 11111, '+491772345678'),
-        (8, 'Sue', 'Perkins', 'MAN', 'ENG', '1976-02-02', 22222, '+491443456432')
+        (10, 'Luiza', 'Dodson', 'ENG', None, '1990-12-23', 11001, '+491772345678'),
+        (11, 'Maria', 'Perkins', 'MAN', 'ENG', '1980-02-02', 23232, '+491443456432')
     ]
     sql = '''
             INSERT INTO teacher (teacher_id, first_name, last_name, language_1, language_2, dob, tax_id, phone_no)
@@ -102,5 +102,23 @@ def insert_teacher(host_name, user_name, user_password, db_name):
 
 if __name__ == "__main__":
     df = insert_teacher(host_name, user_name, user_password, db_name)
-
     print(df)
+
+
+def update_client_address(host_name, user_name, user_password, db_name, new_address, client_name):
+    update_query = f"""
+    UPDATE client
+    SET address = '{new_address}'
+    WHERE client_name = '{client_name}';
+    """
+
+    connection = create_db_connection(host_name, user_name, user_password, db_name)
+    execute_query(connection, update_query)
+    connection.close()
+
+
+if __name__ == "__main__":
+    new_address = '23000 Fingiertweg, 14534 Berlin'
+    client_name = 'Big Business Federation'
+
+    update_client_address(host_name, user_name, user_password, db_name, new_address, client_name)

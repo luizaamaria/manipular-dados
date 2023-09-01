@@ -1,7 +1,7 @@
 import mysql.connector
 from mysql.connector import Error
 import pandas as pd
-from main import connection, create_db_connection, execute_query, user_password, host_name, user_name, db_name
+from main import connection, create_db_connection, execute_query, user_password, host_name, user_name, db_name, read_query, insert_record_if_not_exists
 
 pop_teacher = """
 INSERT INTO teacher VALUES
@@ -77,7 +77,7 @@ INSERT INTO takes_course VALUES
 (113, 19);
 """
 
-connection = create_db_connection("localhost", "root", pw, db)
+connection = create_db_connection(host_name, user_name, user_password, db_name)
 execute_query(connection, pop_client)
 execute_query(connection, pop_participant)
 execute_query(connection, pop_course)
